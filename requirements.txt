@@ -4,6 +4,7 @@ sqlalchemy
 psycopg2-binary
 python-dotenv
 langchain
+pandas
+spacy>=3.0.0
 textblob
-spacy
 scikit-learn
