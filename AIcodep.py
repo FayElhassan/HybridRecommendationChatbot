@@ -16,6 +16,7 @@ csv_files = [file for file in os.listdir(folder_path) if file.endswith('.csv')]
 
 data_frames = []
 
+
 for csv_file in csv_files:
     file_path = os.path.join(folder_path, csv_file)
     data_frame = read_data_from_csv(file_path)
