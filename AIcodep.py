@@ -8,38 +8,45 @@ from sklearn.metrics.pairwise import cosine_similarity
 from streamlit_chat import message
 
 # Load Data
+@st.cache
 def read_data_from_csv(file_path):
-    return pd.read_csv(file_path)
+    try:
+        return pd.read_csv(file_path)
+    except Exception as e:
+        st.error(f"Error reading data: {e}")
+        return pd.DataFrame()
 
-folder_path = 'Pages Preprocessed'  # Replace with the actual path to your folder
-csv_files = [file for file in os.listdir(folder_path) if file.endswith('.csv')]
+@st.cache
+def load_data():
+    folder_path = 'Pages Preprocessed'
+    try:
+        csv_files = [file for file in os.listdir(folder_path) if file.endswith('.csv')]
+        data_frames = []
 
-data_frames = []
+        for csv_file in csv_files:
+            file_path = os.path.join(folder_path, csv_file)
+            data_frame = read_data_from_csv(file_path)
+            data_frames.append(data_frame)
 
+        df = pd.concat(data_frames, ignore_index=True)
+        return df
+    except Exception as e:
+        st.error(f"Error loading data: {e}")
+        return pd.DataFrame()
 
-for csv_file in csv_files:
-    file_path = os.path.join(folder_path, csv_file)
-    data_frame = read_data_from_csv(file_path)
-    data_frames.append(data_frame)
+df = load_data()
 
-df = pd.concat(data_frames, ignore_index=True)
+# Ensure desired columns are present and handle NaN values
+if not df.empty:
+    desired_columns = ['Keyword','Title', 'Subtitle', 'Summary', 'Search Term', 'Question', 'Answer',"Tags","Sentiment Analysis","Rating"]
+    for col in desired_columns:
+        if col not in df.columns:
+            df[col] = None
 
-# Ensure the desired columns exist in the DataFrame
-desired_columns = ['Keyword','Title', 'Subtitle', 'Summary', 'Search Term', 'Question', 'Answer',"Tags","Sentiment Analysis","Rating"]
-for col in desired_columns:
-    if col not in df.columns:
-        df[col] = None
+    text_columns = ['Keyword','Title', 'Subtitle', 'Summary', 'Search Term', 'Question', 'Answer',"Tags"]
+    df[text_columns] = df[text_columns].fillna('')
+    df['combined_text'] = df[text_columns].apply(lambda x: ' '.join(x), axis=1)
 
-# Print the columns to verify their names
-print(df.columns)
-
-text_columns = ['Keyword','Title', 'Subtitle', 'Summary', 'Search Term', 'Question', 'Answer',"Tags"]
-
-# Fill NaN values with empty strings in text columns
-df[text_columns] = df[text_columns].fillna('')
-
-# Create a new column 'combined_text' by joining the text columns
-df['combined_text'] = df[text_columns].apply(lambda x: ' '.join(x), axis=1)
 
 # Print the first few rows of the DataFrame to check the result
 print(df.head())
