@@ -1,7 +1,7 @@
 streamlit
 sqlalchemy
 psycopg2-binary
-dotenv
+python-dotenv
 langchain
 textblob
 spacy
