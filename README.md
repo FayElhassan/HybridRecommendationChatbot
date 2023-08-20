@@ -56,4 +56,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ---
 
-Remember to replace `YOUR_USERNAME` with your actual GitHub username. Also, you might want to adjust the repository name (`HybridRecommendationChatbot`) if you choose a different name for your repository on GitHub.
+
