@@ -11,7 +11,7 @@ from streamlit_chat import message
 def read_data_from_csv(file_path):
     return pd.read_csv(file_path)
 
-folder_path = '/Pages Preprocessed'  # Replace with the actual path to your folder
+folder_path = 'Pages Preprocessed'  # Replace with the actual path to your folder
 csv_files = [file for file in os.listdir(folder_path) if file.endswith('.csv')]
 
 data_frames = []
