@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from streamlit_chat import message
 
 # Load Data
-@st.cache
+@st.cache_data
 def read_data_from_csv(file_path):
     try:
         return pd.read_csv(file_path)
@@ -16,7 +16,7 @@ def read_data_from_csv(file_path):
         st.error(f"Error reading data: {e}")
         return pd.DataFrame()
 
-@st.cache
+@st.cache_data
 def load_data():
     folder_path = 'Pages Preprocessed'
     try:
@@ -35,6 +35,7 @@ def load_data():
         return pd.DataFrame()
 
 df = load_data()
+
 
 # Ensure desired columns are present and handle NaN values
 if not df.empty:
