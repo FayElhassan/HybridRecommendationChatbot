@@ -58,10 +58,10 @@ tfidf_matrix = tfidf_vectorizer.fit_transform(df['combined_text'])
 user_item_similarity = cosine_similarity(tfidf_matrix)
 
 # Load the 'en_core_web_sm' model only if it's not present
+
 if 'en_core_web_sm' not in spacy.util.get_installed_models():
     spacy.cli.download("en_core_web_sm")
 nlp = spacy.load('en_core_web_sm')
-
 def get_content_based_recommendations(query):
     # Transform the user's query using the TF-IDF vectorizer
     query_vector = tfidf_vectorizer.transform([query])
