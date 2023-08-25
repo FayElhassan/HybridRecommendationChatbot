@@ -1,6 +1,6 @@
 streamlit
 pandas
-spacy
+spacy==2.3.5
 textblob
 scikit-learn
 streamlit_chat  # Assuming this is the correct name for the package containing the `message` function
