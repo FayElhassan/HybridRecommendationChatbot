@@ -54,8 +54,6 @@ def chat_interface():
     # Initialize chat history
     history.initialize()
 
-    with st.container():
-        response_container = st.container()
 
     # Create containers for chat responses and user prompts
     response_container, prompt_container = st.container(), st.container()
