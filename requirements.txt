@@ -1,7 +1,7 @@
 streamlit
+streamlit_chat
 pandas
 spacy
 textblob
 scikit-learn
-streamlit_chat  # Assuming this is the correct name for the package containing the `message` function
-https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz#egg=en_core_web_sm
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.0.0/en_core_web_sm-3.0.0.tar.gz#egg=en_core_web_sm
