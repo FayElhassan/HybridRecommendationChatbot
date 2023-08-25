@@ -125,4 +125,7 @@ def chat_interface():
                     message(st.session_state["assistant"][i], key=str(i), avatar_style="thumbs")
 
 if __name__ == "__main__":
-    chat_interface()
+   try:
+        chat_interface()
+    except Exception as e:
+        st.write(f"Error: {e}")
