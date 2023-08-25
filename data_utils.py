@@ -5,7 +5,7 @@ def read_data_from_csv(file_path):
     return pd.read_csv(file_path)
 import pandas as pd
 
-def load_data_from_github():
+def load_data_from_github(folder_path):
     base_url = "https://raw.githubusercontent.com/FayElhassan/HybridRecommendationChatbot/main/Pages%20Preprocessed/"
     
     file_names = [
