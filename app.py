@@ -1,10 +1,13 @@
 import streamlit as st
 from streamlit_chat import message
-from data_utils import load_data
+# from data_utils import load_data
+from data_utils import load_data_from_github
 from recommendation import initialize_recommendations, get_hybrid_recommendations
 
-folder_path = 'Pages Preprocessed'
-df = load_data(folder_path)
+folder_path = 'https://github.com/fayelhassan/HybridRecommendationChatbot/tree/main/Pages%20Preprocessed'
+
+df = load_data_from_github(folder_path)
+
 initialize_recommendations(df)
 class ChatHistory:
         
