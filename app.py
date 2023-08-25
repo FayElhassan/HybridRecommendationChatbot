@@ -3,7 +3,7 @@ from streamlit_chat import message
 from data_utils import load_data
 from recommendation import initialize_recommendations, get_hybrid_recommendations
 
-folder_path = 'Pages Preprocessed'
+folder_path = '/Pages Preprocessed'
 df = load_data(folder_path)
 initialize_recommendations(df)
 class ChatHistory:
